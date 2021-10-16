@@ -1,8 +1,7 @@
 from flask import Flask, render_template
 import picamera
-import datetime
-import time
-import glob
+#TODO: add glob, time libraries
+
  
 app = Flask(__name__)
 
@@ -14,35 +13,34 @@ def home():
 @app.route('/capture', methods=["POST"])
 def capture():
     camera = picamera.PiCamera()
-    #use a timestamp to save pics with unique names based on seconds since 1970.
-    picName=str(int(time.time())) 
-    #picName="captured" 
+    #Todo: use a timestamp to save pics with unique names.
+   
 
-    #build the file path to store the image
-    photo="static/images/"+picName +".jpg"
+    #Todo: build the file path to store the image
+  
     
     try:
-        #comment out these 3 lines if no preview is desired.
+        
         camera.start_preview()
         time.sleep(2)
         camera.stop_preview()
-        #capture the photo to the specified path
-        camera.capture(photo)
+        #TODO: capture the photo to the specified path
+        
     finally:
         camera.close()
     
-    print(photo)
-    
-    return render_template('index.html', photo=photo)      
+     
+    #TODO: pass the data (path for image) to the template
+    return render_template('index.html')      
 
 @app.route("/all")
 def show_all():
     
     #Use glob to return an array of paths to all pics. 
     #the * wildcard will pattern match any .jpg in our images folder.
-    photos=glob.glob("static/images/*.jpg")
+     
 
-    return render_template('all.html', photos=photos)
+    return render_template('all.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
