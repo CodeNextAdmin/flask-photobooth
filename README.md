@@ -1,5 +1,6 @@
-# flask-photobooth
-
+# flask-photobooth - teaching version
+ ** This version has the main code removed for instructional purposes. ** 
+ 
  A basic Flask-based Photobooth for demonstrating interaction between Raspberry Pi Camera and a Flask app. For use in Google's Code Next Team Edge program. 
  Use this project to highlight how to:
  - display dynamic content using Jinja2 (comes with Flask).
